@@ -42,7 +42,7 @@ func Test_GenerateAppCatalogEntryYAML(t *testing.T) {
 		},
 	}
 
-	docs := filepath.Join(root, "..", "..", "..", "..", "docs")
+	docs := filepath.Join(root, "..", "..", "docs")
 	for i, tc := range testCases {
 		t.Run(fmt.Sprintf("case %d: generates %s successfully", i, tc.name), func(t *testing.T) {
 			rendered, err := yaml.Marshal(tc.resource)
