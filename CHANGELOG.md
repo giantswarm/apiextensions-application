@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Move existing APIs from `giantswarm/apiextensions` to this repository.
 
 
-[Unreleased]: https://github.com/giantswarm/REPOSITORY_NAME/tree/master
+[Unreleased]: https://github.com/giantswarm/apiextensions-application/tree/master

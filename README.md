@@ -1,30 +1,26 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/template.svg?style=shield)](https://circleci.com/gh/giantswarm/template)
+[![CircleCI](https://circleci.com/gh/giantswarm/apiextensions-application.svg?style=shield)](https://circleci.com/gh/giantswarm/apiextensions-application)
 
-# REPOSITORY_NAME
+# apiextensions-application
 
-This is a template repository containing some basic files every repository
-needs.
+This repository defines the Giant Swarm Kubernetes APIs in the `application.giantswarm.io` group including the following:
 
-To use it just hit `Use this template` button or [this link][generate].
+- `App`
+- `AppCatalog` (deprecated in favor of `Catalog`)
+- `AppCatalogEntry`
+- `Catalog`
+- `Chart`
 
-Things to do with your newly created repo:
+Examples CRs for these can be found in the `docs/cr` directory.
 
-1. Run`devctl replace -i "REPOSITORY_NAME" "$(basename $(git rev-parse
-   --show-toplevel))" --ignore '.git/**' '**'`.
-2. Run `devctl replace -i "template" "$(basename $(git rev-parse
-   --show-toplevel))" --ignore '.git/**' '**'`.
-3. Go to https://github.com/giantswarm/REPOSITORY_NAME/settings and make sure `Allow
-   merge commits` box is unchecked and `Automatically delete head branches` box
-   is checked.
-4. Go to https://github.com/giantswarm/REPOSITORY_NAME/settings/access and add
-   `giantswarm/bots` with `Write` access and `giantswarm/employees` with
-   `Admin` access.
-5. Add this repository to https://github.com/giantswarm/github.
-6. Create quay.io docker repository if needed.
-7. Add the project to the CircleCI:
-   https://circleci.com/setup-project/gh/giantswarm/REPOSITORY_NAME
-8. Change the badge (with style=shield):
-   https://circleci.com/gh/giantswarm/REPOSITORY_NAME.svg?style=shield&circle-token=TOKEN_FOR_PRIVATE_REPO
-   If this is a private repository token with scope `status` will be needed.
+**Note: These APIs were originally defined in `giantswarm/apiextensions` and were moved here to simplify dependency graphs.**
 
-[generate]: https://github.com/giantswarm/template/generate
+## Code Generation
+
+Code generation is used to generate:
+
+- `DeepCopy` methods for each Go type to satisfy the `runtime.Object` interface (`zz_generated.deepcopy.go`).
+- CRDs for each API in YAML format to be applied to a Kubernetes cluster before creating CRs using that API (`config/crd`).
+
+Regenerate these files using `make generate`. Other options can be viewed in `Makefile.custom.mk`.
+
+Additionally, example CRs are generated from code in Go tests using `go test ./... -update`.
