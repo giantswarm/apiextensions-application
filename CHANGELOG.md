@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `Created At` printer column for `App` CRD.
+- Add `Installed Version` printer column for `App` CRD for `-o wide` output.
+
 ## [0.1.0] - 2021-11-23
 
 ### Added
