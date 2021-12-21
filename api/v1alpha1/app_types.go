@@ -76,8 +76,8 @@ type AppSpec struct {
 	// Name is the name of the app to be deployed.
 	// e.g. kubernetes-prometheus
 	Name string `json:"name"`
-	// Namespace is the namespace where the app should be deployed.
-	// e.g. monitoring
+	// Namespace is the target namespace where the app should be deployed
+	// e.g. monitoring, it cannot be changed.
 	Namespace string `json:"namespace"`
 	// +kubebuilder:validation:Optional
 	// +nullable
