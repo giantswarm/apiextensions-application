@@ -24,3 +24,27 @@ Code generation is used to generate:
 Regenerate these files using `make generate`. Other options can be viewed in `Makefile.custom.mk`.
 
 Additionally, example CRs are generated from code in Go tests using `go test ./... -update`.
+
+## Update docs
+
+When a new release is created the reference needs to be updated in the [docs config].
+
+## Sync CRDs
+
+All CRDs are embedded in [apptestctl] and the Chart CRD is embedded in [app-operator].
+
+### apptestctl
+
+```sh
+$ make sync-crds
+```
+
+### app-operator
+
+```sh
+$ make sync-chart-crd
+```
+
+[app-operator]: https://github.com/giantswarm/app-operator
+[apptestctl]: https://github.com/giantswarm/apptestctl
+[docs config]: https://github.com/giantswarm/docs/blob/806b6383c51fd6f1c4b78ca32203cbb8071fb935/scripts/update-crd-reference/config.yaml#L8-L11
