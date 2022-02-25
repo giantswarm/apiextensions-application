@@ -125,13 +125,10 @@ type AppCatalogEntrySpecRestrictions struct {
 	// +nullable
 	// CompatibleProviders is a list of provider names which this app is compatible with. Default is empty.
 	// Empty list means app is compatible with all providers.
-	CompatibleProviders []Provider `json:"compatibleProviders,omitempty"`
+	CompatibleProviders string `json:"compatibleProviders,omitempty"`
 	// NamespaceSingleton is a flag for whether this app can be installed at most once per namespace. Default is false.
 	NamespaceSingleton bool `json:"namespaceSingleton,omitempty"`
 }
-
-// +kubebuilder:validation:Enum=aws;azure;kvm
-type Provider string
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
