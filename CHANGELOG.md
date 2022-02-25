@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Remove compatible providers validation as its overly strict.
+- Remove compatible providers validation for `AppCatalogEntry` as its overly strict.
 
 ## [0.3.0] - 2021-12-21
 

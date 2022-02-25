@@ -143,8 +143,10 @@ spec:
                     description: CompatibleProviders is a list of provider names which
                       this app is compatible with. Default is empty. Empty list means
                       app is compatible with all providers.
+                    items:
+                      type: string
                     nullable: true
-                    type: string
+                    type: array
                   fixedNamespace:
                     description: FixedNamespace is the namespace which this app must
                       be installed in.

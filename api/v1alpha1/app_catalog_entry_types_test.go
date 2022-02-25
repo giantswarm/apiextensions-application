@@ -101,7 +101,7 @@ func newAppCatalogEntryExampleCR() *AppCatalogEntry {
 		},
 		Restrictions: &AppCatalogEntrySpecRestrictions{
 			ClusterSingleton:    true,
-			CompatibleProviders: []Provider{"aws"},
+			CompatibleProviders: []string{"aws"},
 			FixedNamespace:      "giantswarm",
 		},
 
