@@ -30,7 +30,6 @@ func NewCatalogCR() *Catalog {
 	}
 }
 
-// +kubebuilder:printcolumn:name="Catalog URL",type=string,JSONPath=`.spec.storage.URL`,description="URL of the catalog"
 // +kubebuilder:printcolumn:name="Age",type=date,JSONPath=`.metadata.creationTimestamp`,description="Time since created"
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

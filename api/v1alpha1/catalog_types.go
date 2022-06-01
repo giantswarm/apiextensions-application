@@ -30,12 +30,10 @@ func NewCatalogCR() *Catalog {
 	}
 }
 
-// +kubebuilder:printcolumn:name="Catalog URL",type=string,JSONPath=`.spec.storage.URL`,description="URL of the catalog"
 // +kubebuilder:printcolumn:name="Age",type=date,JSONPath=`.metadata.creationTimestamp`,description="Time since created"
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:resource:categories=common;giantswarm
-// +kubebuilder:storageversion
 // +k8s:openapi-gen=true
 // Catalog represents a catalog of managed apps. It stores general information for potential apps to install.
 // It is reconciled by app-operator.
