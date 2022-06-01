@@ -22,7 +22,21 @@ func (c *Catalog) ConvertTo(hubRaw conversion.Hub) error {
 	hub.ObjectMeta = c.ObjectMeta
 	hub.Spec.Title = c.Spec.Title
 	hub.Spec.Description = c.Spec.Description
-	hub.Spec.Config = c.Spec.Config
+	if c.Spec.Config != nil {
+		hub.Spec.Config = &v1alpha2.CatalogSpecConfig{}
+		if c.Spec.Config.ConfigMap != nil {
+			hub.Spec.Config.ConfigMap = &v1alpha2.CatalogSpecConfigConfigMap{
+				Name:      c.Spec.Config.ConfigMap.Name,
+				Namespace: c.Spec.Config.ConfigMap.Namespace,
+			}
+		}
+		if c.Spec.Config.Secret != nil {
+			hub.Spec.Config.Secret = &v1alpha2.CatalogSpecConfigSecret{
+				Name:      c.Spec.Config.Secret.Name,
+				Namespace: c.Spec.Config.Secret.Namespace,
+			}
+		}
+	}
 	hub.Spec.LogoURL = c.Spec.LogoURL
 
 	return nil
@@ -40,7 +54,21 @@ func (c *Catalog) ConvertFrom(hubRaw conversion.Hub) error {
 	c.ObjectMeta = hub.ObjectMeta
 	c.Spec.Title = hub.Spec.Title
 	c.Spec.Description = hub.Spec.Description
-	c.Spec.Config = hub.Spec.Config
+	if hub.Spec.Config != nil {
+		c.Spec.Config = &CatalogSpecConfig{}
+		if hub.Spec.Config.ConfigMap != nil {
+			c.Spec.Config.ConfigMap = &CatalogSpecConfigConfigMap{
+				Name:      hub.Spec.Config.ConfigMap.Name,
+				Namespace: hub.Spec.Config.ConfigMap.Namespace,
+			}
+		}
+		if hub.Spec.Config.Secret != nil {
+			c.Spec.Config.Secret = &CatalogSpecConfigSecret{
+				Name:      hub.Spec.Config.Secret.Name,
+				Namespace: hub.Spec.Config.Secret.Namespace,
+			}
+		}
+	}
 	c.Spec.LogoURL = hub.Spec.LogoURL
 
 	return nil
