@@ -1,8 +1,9 @@
 package v1alpha1
 
 import (
-	v1alpha2 "github.com/giantswarm/apiextensions-application/api/v1alpha2"
 	"sigs.k8s.io/controller-runtime/pkg/conversion"
+
+	v1alpha2 "github.com/giantswarm/apiextensions-application/api/v1alpha2"
 )
 
 // Converts AppCatalog to Hub version (v1alpha2)
