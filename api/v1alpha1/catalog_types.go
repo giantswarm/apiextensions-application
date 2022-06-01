@@ -61,6 +61,7 @@ type CatalogSpec struct {
 	// Storage references an object defining catalog repository. Will be
 	// deprecated. Replaced by Repositories.
 	Storage CatalogSpecStorage `json:"storage"`
+	// +kubebuilder:validation:MinItems=1
 	// Repositories is an array of objects defining catalog repositories.
 	Repositories []CatalogSpecRepository `json:"repositories"`
 }
