@@ -6,9 +6,9 @@ import (
 	v1alpha2 "github.com/giantswarm/apiextensions-application/api/v1alpha2"
 )
 
-// Converts AppCatalog to Hub version (v1alpha2)
+// Converts Catalog to Hub version (v1alpha2)
 func (c *Catalog) ConvertTo(hubRaw conversion.Hub) error {
-	hub := hubRaw.(*v1alpha2.AppCatalog)
+	hub := hubRaw.(*v1alpha2.Catalog)
 
 	// actual conversion
 	hub.Spec.Storage = []v1alpha2.CatalogSpecStorage{
@@ -28,9 +28,9 @@ func (c *Catalog) ConvertTo(hubRaw conversion.Hub) error {
 	return nil
 }
 
-// Converts AppCatalog from Hub (v1alpha2) to Spoke version (v1alpha1)
+// Converts Catalog from Hub (v1alpha2) to Spoke version (v1alpha1)
 func (c *Catalog) ConvertFrom(hubRaw conversion.Hub) error {
-	hub := hubRaw.(*v1alpha2.AppCatalog)
+	hub := hubRaw.(*v1alpha2.Catalog)
 
 	// actual conversion
 	c.Spec.Storage.Type = hub.Spec.Storage[0].Type
