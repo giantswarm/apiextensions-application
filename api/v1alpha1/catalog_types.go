@@ -58,9 +58,11 @@ type CatalogSpec struct {
 	Config *CatalogSpecConfig `json:"config,omitempty"`
 	// LogoURL contains the links for logo image file for this catalog
 	LogoURL string `json:"logoURL"`
-	// Storage references a map containing values that should be applied to
-	// the catalog.
+	// Storage references an object defining catalog repository. Will be
+	// deprecated. Replaced by Repositories.
 	Storage CatalogSpecStorage `json:"storage"`
+	// Repositories is an array of objects defining catalog repositories.
+	Repositories []CatalogSpecRepository `json:"repositories"`
 }
 
 // +k8s:openapi-gen=true
@@ -99,6 +101,16 @@ type CatalogSpecConfigSecret struct {
 
 // +k8s:openapi-gen=true
 type CatalogSpecStorage struct {
+	// Type indicates which repository type would be used for this Catalog.
+	// e.g. helm
+	Type string `json:"type"`
+	// URL is the link to where this Catalog's repository is located
+	// e.g. https://example.com/app-catalog/
+	URL string `json:"URL"`
+}
+
+// +k8s:openapi-gen=true
+type CatalogSpecRepository struct {
 	// Type indicates which repository type would be used for this Catalog.
 	// e.g. helm
 	Type string `json:"type"`
