@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Extend `Catalog` CRD with repository list.
+
 ## [0.3.1] - 2022-02-25
 
 ### Fixed
