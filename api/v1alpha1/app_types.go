@@ -68,6 +68,12 @@ type AppSpec struct {
 	Config AppSpecConfig `json:"config,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
+	// Configs is a list of configurations to merge together in the given order.
+	// This field will eventually supersede config and userConfig fields.
+	// See: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr
+	Configs []AppConfiguration `json:"configs,omitempty"`
+	// +kubebuilder:validation:Optional
+	// +nullable
 	// Install is the config used when installing the app.
 	Install AppSpecInstall `json:"install,omitempty"`
 	// KubeConfig is the kubeconfig to connect to the cluster when deploying
@@ -104,6 +110,17 @@ type AppSpecConfig struct {
 	// Secret references a secret containing secret values that should be
 	// applied to the app.
 	Secret AppSpecConfigSecret `json:"secret,omitempty"`
+}
+
+// +k8s:openapi-gen=true
+type AppConfiguration struct {
+	// Kind of configuration to look up that should be applied to the app when deployed.
+	// +kubebuilder:validation:Enum=configMap;secret
+	Kind string `json:"kind"`
+	// Name of the resource of the given kind to look up.
+	Name string `json:"name"`
+	// Namespace where the resource with the given name and kind to look up is located.
+	Namespace string `json:"namespace"`
 }
 
 // +k8s:openapi-gen=true
