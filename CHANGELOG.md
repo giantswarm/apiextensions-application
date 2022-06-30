@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.4.1] - 2022-06-30
 
+## [0.4.1] - 2022-06-30
+
 ### Changed
 
 - Correct wording for deprecation of storage field in Catalog CRD
@@ -48,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 [Unreleased]: https://github.com/giantswarm/apiextensions-application/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/giantswarm/apiextensions-application/compare/v0.4.1...v0.4.1
 [0.4.1]: https://github.com/giantswarm/apiextensions-application/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/giantswarm/apiextensions-application/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/giantswarm/apiextensions-application/compare/v0.3.0...v0.3.1
