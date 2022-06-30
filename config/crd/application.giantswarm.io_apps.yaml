@@ -185,6 +185,31 @@ spec:
                     nullable: true
                     type: object
                 type: object
+              configs:
+                description: 'List of configurations to merge together in the given order.
+                  This field will eventually supersede config and userConfig fields.
+                  See: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr'
+                nullable: true
+                items:
+                  type: object
+                  properties:
+                    kind:
+                      description: Kind of configuration to look up that should be applied to the app when deployed.
+                      enum:
+                      - configMap
+                      - secret
+                      type: string
+                    name:
+                      description: Name of the resource of the given kind to look up.
+                      type: string
+                    namespace:
+                      description: Namespace where the resource with the given name and kind to look up is located.
+                      type: string
+                  required:
+                  - kind
+                  - name
+                  - namespace
+                type: array
               userConfig:
                 description: UserConfig is the user config to be applied when the
                   app is deployed.
