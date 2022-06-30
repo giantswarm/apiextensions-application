@@ -58,8 +58,8 @@ type CatalogSpec struct {
 	Config *CatalogSpecConfig `json:"config,omitempty"`
 	// LogoURL contains the links for logo image file for this catalog
 	LogoURL string `json:"logoURL"`
-	// Storage references an object defining catalog repository. Will be
-	// deprecated. Replaced by Repositories.
+	// Storage references an object defining catalog repository.
+	// This field is deprecated and replaced by Repositories.
 	Storage CatalogSpecStorage `json:"storage"`
 	// +kubebuilder:validation:MinItems=1
 	// Repositories is an array of objects defining catalog repositories.
