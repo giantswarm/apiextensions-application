@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Correct wording for deprecation of storage field in Catalog CRD
+
 ## [0.4.0] - 2022-06-08
 
 ### Added
