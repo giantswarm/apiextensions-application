@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add `configs` section to `App` CRD based on RFC: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr
+- Add `extraConfigs` section to `App` CRD based on RFC: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr
 
 ## [0.4.1] - 2022-06-30
 
