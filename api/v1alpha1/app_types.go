@@ -9,6 +9,14 @@ import (
 const (
 	kindApp              = "App"
 	appDocumentationLink = "https://docs.giantswarm.io/ui-api/management-api/crd/apps.application.giantswarm.io/"
+
+	// NOTE: These should match the kubebuilder annotations set on AppExtraConfig
+	configPriorityDistance = 50
+	configPriorityCatalog  = 0
+	configPriorityDefault  = configPriorityCatalog + configPriorityDistance/2
+	configPriorityCluster  = configPriorityCatalog + configPriorityDistance
+	configPriorityUser     = configPriorityCluster + configPriorityDistance
+	configPriorityMaximum  = configPriorityUser + configPriorityDistance
 )
 
 func NewAppTypeMeta() metav1.TypeMeta {
@@ -68,10 +76,9 @@ type AppSpec struct {
 	Config AppSpecConfig `json:"config,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
-	// Configs is a list of configurations to merge together in the given order.
-	// This field will eventually supersede config and userConfig fields.
+	// ExtraConfigs is a list of configurations to merge together based on the priority and order in the list.
 	// See: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr
-	Configs []AppConfiguration `json:"configs,omitempty"`
+	ExtraConfigs []AppExtraConfig `json:"extraConfigs,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
 	// Install is the config used when installing the app.
@@ -113,7 +120,7 @@ type AppSpecConfig struct {
 }
 
 // +k8s:openapi-gen=true
-type AppConfiguration struct {
+type AppExtraConfig struct {
 	// Kind of configuration to look up that should be applied to the app when deployed.
 	// +kubebuilder:validation:Enum=configMap;secret
 	Kind string `json:"kind"`
@@ -121,6 +128,13 @@ type AppConfiguration struct {
 	Name string `json:"name"`
 	// Namespace where the resource with the given name and kind to look up is located.
 	Namespace string `json:"namespace"`
+	// +optional
+	// +kubebuilder:validation:Minimum:=0
+	// +kubebuilder:validation:Maximum:=150
+	// +kubebuilder:default:=25
+	// Priority is used to indicate at which stage the extra configuration should be merged.
+	// See: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr
+	Priority int `json:"priority"`
 }
 
 // +k8s:openapi-gen=true
