@@ -9,6 +9,14 @@ import (
 const (
 	kindApp              = "App"
 	appDocumentationLink = "https://docs.giantswarm.io/ui-api/management-api/crd/apps.application.giantswarm.io/"
+
+	// NOTE: These should match the kubebuilder annotations set on AppExtraConfig
+	configPriorityDistance = 50
+	configPriorityCatalog  = 0
+	configPriorityDefault  = configPriorityCatalog + configPriorityDistance/2 //nolint
+	configPriorityCluster  = configPriorityCatalog + configPriorityDistance
+	configPriorityUser     = configPriorityCluster + configPriorityDistance
+	configPriorityMaximum  = configPriorityUser + configPriorityDistance //nolint
 )
 
 func NewAppTypeMeta() metav1.TypeMeta {
@@ -68,6 +76,11 @@ type AppSpec struct {
 	Config AppSpecConfig `json:"config,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
+	// ExtraConfigs is a list of configurations to merge together based on the priority and order in the list.
+	// See: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr
+	ExtraConfigs []AppExtraConfig `json:"extraConfigs,omitempty"`
+	// +kubebuilder:validation:Optional
+	// +nullable
 	// Install is the config used when installing the app.
 	Install AppSpecInstall `json:"install,omitempty"`
 	// KubeConfig is the kubeconfig to connect to the cluster when deploying
@@ -104,6 +117,26 @@ type AppSpecConfig struct {
 	// Secret references a secret containing secret values that should be
 	// applied to the app.
 	Secret AppSpecConfigSecret `json:"secret,omitempty"`
+}
+
+// +k8s:openapi-gen=true
+type AppExtraConfig struct {
+	// +optional
+	// +kubebuilder:validation:Enum=configMap;secret
+	// +kubebuilder:default:=configMap
+	// Kind of configuration to look up that should be applied to the app when deployed.
+	Kind string `json:"kind"`
+	// Name of the resource of the given kind to look up.
+	Name string `json:"name"`
+	// Namespace where the resource with the given name and kind to look up is located.
+	Namespace string `json:"namespace"`
+	// +optional
+	// +kubebuilder:validation:Minimum:=0
+	// +kubebuilder:validation:Maximum:=150
+	// +kubebuilder:default:=25
+	// Priority is used to indicate at which stage the extra configuration should be merged.
+	// See: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr
+	Priority int `json:"priority"`
 }
 
 // +k8s:openapi-gen=true
