@@ -121,8 +121,10 @@ type AppSpecConfig struct {
 
 // +k8s:openapi-gen=true
 type AppExtraConfig struct {
-	// Kind of configuration to look up that should be applied to the app when deployed.
+	// +optional
 	// +kubebuilder:validation:Enum=configMap;secret
+	// +kubebuilder:default:=configMap
+	// Kind of configuration to look up that should be applied to the app when deployed.
 	Kind string `json:"kind"`
 	// Name of the resource of the given kind to look up.
 	Name string `json:"name"`

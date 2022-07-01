@@ -115,6 +115,7 @@ spec:
                 items:
                   properties:
                     kind:
+                      default: configMap
                       description: Kind of configuration to look up that should be
                         applied to the app when deployed.
                       enum:
@@ -137,7 +138,6 @@ spec:
                       minimum: 0
                       type: integer
                   required:
-                  - kind
                   - name
                   - namespace
                   type: object
