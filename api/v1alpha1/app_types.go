@@ -13,10 +13,10 @@ const (
 	// NOTE: These should match the kubebuilder annotations set on AppExtraConfig
 	configPriorityDistance = 50
 	configPriorityCatalog  = 0
-	configPriorityDefault  = configPriorityCatalog + configPriorityDistance/2
+	configPriorityDefault  = configPriorityCatalog + configPriorityDistance/2 //nolint
 	configPriorityCluster  = configPriorityCatalog + configPriorityDistance
 	configPriorityUser     = configPriorityCluster + configPriorityDistance
-	configPriorityMaximum  = configPriorityUser + configPriorityDistance
+	configPriorityMaximum  = configPriorityUser + configPriorityDistance //nolint
 )
 
 func NewAppTypeMeta() metav1.TypeMeta {
