@@ -131,7 +131,7 @@ type AppExtraConfig struct {
 	// Namespace where the resource with the given name and kind to look up is located.
 	Namespace string `json:"namespace"`
 	// +optional
-	// +kubebuilder:validation:Minimum:=0
+	// +kubebuilder:validation:Minimum:=1
 	// +kubebuilder:validation:Maximum:=150
 	// +kubebuilder:default:=25
 	// Priority is used to indicate at which stage the extra configuration should be merged.
