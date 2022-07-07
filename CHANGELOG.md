@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Expose App CR extra config priority level constants
+- Update lower boundary of App CR extra config priority field from 0 to 1 because is makes the implementation more convenient, also the catalog level (value 0) is always the base anyway, so starting from 1 make it nicer as well
+
 ## [0.5.0] - 2022-07-01
 
 ### Added

@@ -11,12 +11,12 @@ const (
 	appDocumentationLink = "https://docs.giantswarm.io/ui-api/management-api/crd/apps.application.giantswarm.io/"
 
 	// NOTE: These should match the kubebuilder annotations set on AppExtraConfig
-	configPriorityDistance = 50
-	configPriorityCatalog  = 0
-	configPriorityDefault  = configPriorityCatalog + configPriorityDistance/2 //nolint
-	configPriorityCluster  = configPriorityCatalog + configPriorityDistance
-	configPriorityUser     = configPriorityCluster + configPriorityDistance
-	configPriorityMaximum  = configPriorityUser + configPriorityDistance //nolint
+	ConfigPriorityDistance = 50
+	ConfigPriorityCatalog  = 0
+	ConfigPriorityDefault  = ConfigPriorityCatalog + ConfigPriorityDistance/2 //nolint
+	ConfigPriorityCluster  = ConfigPriorityCatalog + ConfigPriorityDistance
+	ConfigPriorityUser     = ConfigPriorityCluster + ConfigPriorityDistance
+	ConfigPriorityMaximum  = ConfigPriorityUser + ConfigPriorityDistance //nolint
 )
 
 func NewAppTypeMeta() metav1.TypeMeta {
@@ -131,7 +131,7 @@ type AppExtraConfig struct {
 	// Namespace where the resource with the given name and kind to look up is located.
 	Namespace string `json:"namespace"`
 	// +optional
-	// +kubebuilder:validation:Minimum:=0
+	// +kubebuilder:validation:Minimum:=1
 	// +kubebuilder:validation:Maximum:=150
 	// +kubebuilder:default:=25
 	// Priority is used to indicate at which stage the extra configuration should be merged.
