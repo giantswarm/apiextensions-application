@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Adding the `timeout` option to both, the `AppSpecInstall` and the `ChartSpecInstall`, to make it configurable.
+
 ## [0.5.1] - 2022-07-07
 
 ### Changed
