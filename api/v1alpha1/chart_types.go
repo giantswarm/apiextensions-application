@@ -82,6 +82,11 @@ type ChartSpecInstall struct {
 	// +nullable
 	// SkipCRDs when true decides that CRDs which are supplied with the chart are not installed. Default: false.
 	SkipCRDs bool `json:"skipCRDs,omitempty"`
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+	// +optional
+	// Timeout for the Helm action. When not set the default timeout of 5 minutes is being enforced by chart-operator.
+	Timeout *metav1.Duration `json:"timeout,omitempty"`
 }
 
 // +k8s:openapi-gen=true
