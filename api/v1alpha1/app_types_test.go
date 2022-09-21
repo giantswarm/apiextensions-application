@@ -86,6 +86,7 @@ func newAppExampleCR() *App {
 		},
 		Install: AppSpecInstall{
 			SkipCRDs: true,
+			Timeout:  &metav1.Duration{Duration: 360 * time.Second},
 		},
 		KubeConfig: AppSpecKubeConfig{
 			InCluster: false,
@@ -103,13 +104,13 @@ func newAppExampleCR() *App {
 			},
 		},
 		Rollback: AppSpecRollback{
-			Timeout: &metav1.Duration{Duration: 600 * time.Second},
+			Timeout: &metav1.Duration{Duration: 420 * time.Second},
 		},
 		Uninstall: AppSpecUninstall{
-			Timeout: &metav1.Duration{Duration: 120 * time.Second},
+			Timeout: &metav1.Duration{Duration: 480 * time.Second},
 		},
 		Upgrade: AppSpecUpgrade{
-			Timeout: &metav1.Duration{Duration: 600 * time.Second},
+			Timeout: &metav1.Duration{Duration: 540 * time.Second},
 		},
 		UserConfig: AppSpecUserConfig{
 			ConfigMap: AppSpecUserConfigConfigMap{
