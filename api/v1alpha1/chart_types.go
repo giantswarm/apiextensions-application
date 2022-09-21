@@ -68,9 +68,21 @@ type ChartSpec struct {
 	// +nullable
 	// NamespaceConfig is the namespace config to be applied to the target namespace when the chart is deployed.
 	NamespaceConfig ChartSpecNamespaceConfig `json:"namespaceConfig,omitempty"`
+	// +kubebuilder:validation:Optional
+	// +nullable
+	// Rollback is the config used to deploy the app and is passed to Helm.
+	Rollback ChartSpecRollback `json:"rollback,omitempty"`
 	// TarballURL is the URL for the Helm chart tarball to be deployed.
 	// e.g. https://example.com/path/to/prom-1-0-0.tgz
 	TarballURL string `json:"tarballURL"`
+	// +kubebuilder:validation:Optional
+	// +nullable
+	// Uninstall is the config used to deploy the app and is passed to Helm.
+	Uninstall ChartSpecUninstall `json:"uninstall,omitempty"`
+	// +kubebuilder:validation:Optional
+	// +nullable
+	// Upgrade is the config used to deploy the app and is passed to Helm.
+	Upgrade ChartSpecUpgrade `json:"upgrade,omitempty"`
 	// Version is the version of the chart that should be deployed.
 	// e.g. 1.0.0
 	Version string `json:"version"`
@@ -85,7 +97,34 @@ type ChartSpecInstall struct {
 	// +kubebuilder:validation:Type=string
 	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
 	// +optional
-	// Timeout for the Helm action. When not set the default timeout of 5 minutes is being enforced by chart-operator.
+	// Timeout for the Helm action. When not set the default timeout of 5 minutes is being enforced.
+	Timeout *metav1.Duration `json:"timeout,omitempty"`
+}
+
+// +k8s:openapi-gen=true
+type ChartSpecRollback struct {
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+	// +optional
+	// Timeout for the Helm uninstall. When not set the default timeout of 5 minutes is being enforced.
+	Timeout *metav1.Duration `json:"timeout,omitempty"`
+}
+
+// +k8s:openapi-gen=true
+type ChartSpecUninstall struct {
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+	// +optional
+	// Timeout for the Helm uninstall. When not set the default timeout of 5 minutes is being enforced.
+	Timeout *metav1.Duration `json:"timeout,omitempty"`
+}
+
+// +k8s:openapi-gen=true
+type ChartSpecUpgrade struct {
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+	// +optional
+	// Timeout for the Helm upgrade. When not set the default timeout of 5 minutes is being enforced.
 	Timeout *metav1.Duration `json:"timeout,omitempty"`
 }
 

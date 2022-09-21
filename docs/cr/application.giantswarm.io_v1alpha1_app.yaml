@@ -28,6 +28,12 @@ spec:
   namespaceConfig:
     annotations:
       linkerd.io/inject: enabled
+  rollback:
+    timeout: 10m0s
+  uninstall:
+    timeout: 2m0s
+  upgrade:
+    timeout: 10m0s
   userConfig:
     configMap:
       name: prometheus-user-values

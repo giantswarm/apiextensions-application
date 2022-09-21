@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"testing"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -100,6 +101,15 @@ func newAppExampleCR() *App {
 			Annotations: map[string]string{
 				"linkerd.io/inject": "enabled",
 			},
+		},
+		Rollback: AppSpecRollback{
+			Timeout: &metav1.Duration{Duration: 600 * time.Second},
+		},
+		Uninstall: AppSpecUninstall{
+			Timeout: &metav1.Duration{Duration: 120 * time.Second},
+		},
+		Upgrade: AppSpecUpgrade{
+			Timeout: &metav1.Duration{Duration: 600 * time.Second},
 		},
 		UserConfig: AppSpecUserConfig{
 			ConfigMap: AppSpecUserConfigConfigMap{

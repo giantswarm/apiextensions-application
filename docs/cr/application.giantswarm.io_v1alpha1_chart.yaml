@@ -23,5 +23,11 @@ spec:
   namespaceConfig:
     annotations:
       linkerd.io/inject: enabled
+  rollback:
+    timeout: 10m0s
   tarballURL: prometheus-1.0.1.tgz
+  uninstall:
+    timeout: 2m0s
+  upgrade:
+    timeout: 10m0s
   version: 1.0.1
