@@ -98,7 +98,7 @@ type AppSpec struct {
 	NamespaceConfig AppSpecNamespaceConfig `json:"namespaceConfig,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
-	// Rollback is the config used when upgrading the app.
+	// Rollback is the config used when rolling back the app.
 	Rollback AppSpecRollback `json:"rollback,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
@@ -106,7 +106,7 @@ type AppSpec struct {
 	Upgrade AppSpecUpgrade `json:"upgrade,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
-	// Uninstall is the config used when upgrading the app.
+	// Uninstall is the config used when uninstalling the app.
 	Uninstall AppSpecUninstall `json:"uninstall,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
@@ -169,7 +169,7 @@ type AppSpecRollback struct {
 	// +kubebuilder:validation:Type=string
 	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
 	// +optional
-	// Timeout for the Helm uninstall. When not set the default timeout of 5 minutes is being enforced.
+	// Timeout for the Helm rollback. When not set the default timeout of 5 minutes is being enforced.
 	Timeout *metav1.Duration `json:"timeout,omitempty"`
 }
 

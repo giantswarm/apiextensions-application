@@ -225,17 +225,17 @@ spec:
                     type: object
                 type: object
               rollback:
-                description: Rollback is the config used when upgrading the app.
+                description: Rollback is the config used when rolling back the app.
                 nullable: true
                 properties:
                   timeout:
-                    description: Timeout for the Helm uninstall. When not set the
-                      default timeout of 5 minutes is being enforced.
+                    description: Timeout for the Helm rollback. When not set the default
+                      timeout of 5 minutes is being enforced.
                     pattern: ^([0-9]+(\.[0-9]+)?(ms|s|m))+$
                     type: string
                 type: object
               uninstall:
-                description: Uninstall is the config used when upgrading the app.
+                description: Uninstall is the config used when uninstalling the app.
                 nullable: true
                 properties:
                   timeout:
