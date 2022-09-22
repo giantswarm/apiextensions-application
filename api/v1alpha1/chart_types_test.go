@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"testing"
+	"time"
 
 	"github.com/google/go-cmp/cmp"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -75,6 +76,7 @@ func newChartExampleCR() *Chart {
 		Namespace: "monitoring",
 		Install: ChartSpecInstall{
 			SkipCRDs: true,
+			Timeout:  &metav1.Duration{Duration: 360 * time.Second},
 		},
 		Config: ChartSpecConfig{
 			ConfigMap: ChartSpecConfigConfigMap{
@@ -91,8 +93,17 @@ func newChartExampleCR() *Chart {
 				"linkerd.io/inject": "enabled",
 			},
 		},
+		Rollback: ChartSpecRollback{
+			Timeout: &metav1.Duration{Duration: 420 * time.Second},
+		},
 		TarballURL: "prometheus-1.0.1.tgz",
-		Version:    "1.0.1",
+		Uninstall: ChartSpecUninstall{
+			Timeout: &metav1.Duration{Duration: 480 * time.Second},
+		},
+		Upgrade: ChartSpecUpgrade{
+			Timeout: &metav1.Duration{Duration: 540 * time.Second},
+		},
+		Version: "1.0.1",
 	}
 
 	return cr

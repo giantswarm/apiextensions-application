@@ -98,6 +98,18 @@ type AppSpec struct {
 	NamespaceConfig AppSpecNamespaceConfig `json:"namespaceConfig,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
+	// Rollback is the config used when rolling back the app.
+	Rollback AppSpecRollback `json:"rollback,omitempty"`
+	// +kubebuilder:validation:Optional
+	// +nullable
+	// Upgrade is the config used when upgrading the app.
+	Upgrade AppSpecUpgrade `json:"upgrade,omitempty"`
+	// +kubebuilder:validation:Optional
+	// +nullable
+	// Uninstall is the config used when uninstalling the app.
+	Uninstall AppSpecUninstall `json:"uninstall,omitempty"`
+	// +kubebuilder:validation:Optional
+	// +nullable
 	// UserConfig is the user config to be applied when the app is deployed.
 	UserConfig AppSpecUserConfig `json:"userConfig,omitempty"`
 	// Version is the version of the app that should be deployed.
@@ -145,6 +157,38 @@ type AppSpecInstall struct {
 	// +nullable
 	// SkipCRDs when true decides that CRDs which are supplied with the chart are not installed. Default: false.
 	SkipCRDs bool `json:"skipCRDs,omitempty"`
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+	// +optional
+	// Timeout for the Helm install. When not set the default timeout of 5 minutes is being enforced.
+	Timeout *metav1.Duration `json:"timeout,omitempty"`
+}
+
+// +k8s:openapi-gen=true
+type AppSpecRollback struct {
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+	// +optional
+	// Timeout for the Helm rollback. When not set the default timeout of 5 minutes is being enforced.
+	Timeout *metav1.Duration `json:"timeout,omitempty"`
+}
+
+// +k8s:openapi-gen=true
+type AppSpecUninstall struct {
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+	// +optional
+	// Timeout for the Helm uninstall. When not set the default timeout of 5 minutes is being enforced.
+	Timeout *metav1.Duration `json:"timeout,omitempty"`
+}
+
+// +k8s:openapi-gen=true
+type AppSpecUpgrade struct {
+	// +kubebuilder:validation:Type=string
+	// +kubebuilder:validation:Pattern="^([0-9]+(\\.[0-9]+)?(ms|s|m))+$"
+	// +optional
+	// Timeout for the Helm upgrade. When not set the default timeout of 5 minutes is being enforced.
+	Timeout *metav1.Duration `json:"timeout,omitempty"`
 }
 
 // +k8s:openapi-gen=true
