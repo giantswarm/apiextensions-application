@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Adding the `timeout` option to both, the `AppSpecInstall` and the `ChartSpecInstall`, to make it configurable.
+- Make `timeout` for Helm operations configurable through App and Chart CRs specs.
 
 ## [0.5.1] - 2022-07-07
 
