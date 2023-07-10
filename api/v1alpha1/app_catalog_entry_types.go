@@ -73,7 +73,7 @@ type AppCatalogEntrySpec struct {
 	// Restrictions is metadata from Chart.yaml for this app and is used to validate app CRs.
 	Restrictions *AppCatalogEntrySpecRestrictions `json:"restrictions,omitempty"`
 	// Version is the version of the app chart for this entry.
-	// e.g. 1.9.2
+	// e.g. 3.0.0
 	Version string `json:"version"`
 }
 
