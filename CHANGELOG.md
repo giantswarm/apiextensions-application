@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- AppCatalogEntry: Rename `nginx-ingress-controller-app` to `ingress-nginx`. ([#54](https://github.com/giantswarm/apiextensions-application/pull/54))
+- AppCatalogEntry: Rename `nginx-ingress-controller-app` to `ingress-nginx`. ([#54](https://github.com/giantswarm/apiextensions-application/pull/54), [#55](https://github.com/giantswarm/apiextensions-application/pull/55))
 
 ## [0.6.0] - 2022-09-22
 
