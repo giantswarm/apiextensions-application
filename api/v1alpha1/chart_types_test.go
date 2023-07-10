@@ -3,7 +3,7 @@ package v1alpha1
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"regexp"
 	"testing"
@@ -44,12 +44,12 @@ func Test_GenerateChartYAML(t *testing.T) {
 			rendered = statusRegex.ReplaceAll(rendered, []byte(""))
 
 			if *update {
-				err := ioutil.WriteFile(path, rendered, 0644) // nolint
+				err := os.WriteFile(path, rendered, 0644) // nolint
 				if err != nil {
 					t.Fatal(err)
 				}
 			}
-			goldenFile, err := ioutil.ReadFile(path)
+			goldenFile, err := os.ReadFile(path)
 			if err != nil {
 				t.Fatal(err)
 			}
