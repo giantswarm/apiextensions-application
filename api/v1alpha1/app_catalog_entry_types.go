@@ -52,10 +52,10 @@ type AppCatalogEntry struct {
 // +k8s:openapi-gen=true
 type AppCatalogEntrySpec struct {
 	// AppName is the name of the app this entry belongs to.
-	// e.g. nginx-ingress-controller-app
+	// e.g. ingress-nginx
 	AppName string `json:"appName"`
 	// AppVersion is the upstream version of the app for this entry.
-	// e.g. v0.35.0
+	// e.g. v1.8.1
 	AppVersion string `json:"appVersion"`
 	// Catalog is the name of the app catalog this entry belongs to.
 	// e.g. giantswarm

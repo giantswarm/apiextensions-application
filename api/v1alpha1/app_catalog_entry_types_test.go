@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"path/filepath"
 	"regexp"
 	goruntime "runtime"
@@ -58,12 +58,12 @@ func Test_GenerateAppCatalogEntryYAML(t *testing.T) {
 			rendered = statusRegex.ReplaceAll(rendered, []byte(""))
 
 			if *update {
-				err := ioutil.WriteFile(path, rendered, 0644) // nolint
+				err := os.WriteFile(path, rendered, 0644) // nolint
 				if err != nil {
 					t.Fatal(err)
 				}
 			}
-			goldenFile, err := ioutil.ReadFile(path)
+			goldenFile, err := os.ReadFile(path)
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -82,12 +82,12 @@ func newAppCatalogEntryExampleCR() *AppCatalogEntry {
 	timeVal := metav1.NewTime(rawTime)
 
 	cr.ObjectMeta = metav1.ObjectMeta{
-		Name:      "giantswarm-nginx-ingress-controller-app-1.9.2",
+		Name:      "giantswarm-ingress-nginx-3.0.0",
 		Namespace: metav1.NamespaceDefault,
 	}
 	cr.Spec = AppCatalogEntrySpec{
-		AppName:    "nginx-ingress-controller-app",
-		AppVersion: "v0.35.0",
+		AppName:    "ingress-nginx",
+		AppVersion: "v1.8.1",
 		Catalog: AppCatalogEntrySpecCatalog{
 			Name:      "giantswarm",
 			Namespace: "",
@@ -96,8 +96,8 @@ func newAppCatalogEntryExampleCR() *AppCatalogEntry {
 		DateUpdated: &timeVal,
 		Chart: AppCatalogEntrySpecChart{
 			APIVersion: "v1",
-			Home:       "https://github.com/giantswarm/nginx-ingress-controller-app",
-			Icon:       "https://upload.wikimedia.org/wikipedia/commons/nginx-logo.svg",
+			Home:       "https://github.com/giantswarm/ingress-nginx-app",
+			Icon:       "https://s.giantswarm.io/app-icons/ingress-nginx/2/icon_dark.svg",
 		},
 		Restrictions: &AppCatalogEntrySpecRestrictions{
 			ClusterSingleton:    true,
@@ -105,7 +105,7 @@ func newAppCatalogEntryExampleCR() *AppCatalogEntry {
 			FixedNamespace:      "giantswarm",
 		},
 
-		Version: "1.9.2",
+		Version: "3.0.0",
 	}
 
 	return cr

@@ -2,18 +2,18 @@ apiVersion: application.giantswarm.io/v1alpha1
 kind: AppCatalogEntry
 metadata:
   creationTimestamp: null
-  name: giantswarm-nginx-ingress-controller-app-1.9.2
+  name: giantswarm-ingress-nginx-3.0.0
   namespace: default
 spec:
-  appName: nginx-ingress-controller-app
-  appVersion: v0.35.0
+  appName: ingress-nginx
+  appVersion: v1.8.1
   catalog:
     name: giantswarm
     namespace: ""
   chart:
     apiVersion: v1
-    home: https://github.com/giantswarm/nginx-ingress-controller-app
-    icon: https://upload.wikimedia.org/wikipedia/commons/nginx-logo.svg
+    home: https://github.com/giantswarm/ingress-nginx-app
+    icon: https://s.giantswarm.io/app-icons/ingress-nginx/2/icon_dark.svg
   dateCreated: "2020-09-02T09:40:39Z"
   dateUpdated: "2020-09-02T09:40:39Z"
   restrictions:
@@ -21,4 +21,4 @@ spec:
     compatibleProviders:
     - aws
     fixedNamespace: giantswarm
-  version: 1.9.2
+  version: 3.0.0
