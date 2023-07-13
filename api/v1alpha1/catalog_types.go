@@ -43,6 +43,8 @@ type Catalog struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              CatalogSpec `json:"spec"`
+	// +kubebuilder:validation:Optional
+	Status CatalogStatus `json:"status"`
 }
 
 // +k8s:openapi-gen=true
@@ -120,10 +122,31 @@ type CatalogSpecRepository struct {
 	URL string `json:"URL"`
 }
 
+// CatalogStatus represents the current state of the catalog.
+type CatalogStatus struct {
+	// HelmRepositoryList contains the list of Flux HelmRepository custom resources
+	// that have been successfully created from the Catalog object.
+	// +optional
+	HelmRepositoryList *HelmRepositoryList `json:"helmRepositoryList,omitempty"`
+}
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type CatalogList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
 	Items           []Catalog `json:"items"`
+}
+
+// HelmRepositoryList carries the list of Flux HelmRepository custom resources
+// that have been successfully created from the Catalog object.
+type HelmRepositoryList struct {
+	// Entries of HelmRepository custom resources.
+	Entries []HelmRepositoryRef `json:"entries"`
+}
+
+// HelmRepositoryRef represents a basic HelmRepository custom resource information.
+type HelmRepositoryRef struct {
+	Name      string `json:"name"`
+	Namespace string `json:"namespace"`
 }
