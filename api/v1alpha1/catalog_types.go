@@ -141,7 +141,12 @@ type CatalogList struct {
 // HelmRepositoryList carries the list of Flux HelmRepository custom resources
 // that have been successfully created from the Catalog object.
 type HelmRepositoryList struct {
-	// Entries of HelmRepository custom resources in a form of
-	// the `{name: namespace}` map.
-	Entries []map[string]string `json:"entries"`
+	// Entries of HelmRepository custom resources.
+	Entries []HelmRepositoryRef `json:"entries"`
+}
+
+// HelmRepositoryRef represents a basic HelmRepository custom resource information.
+type HelmRepositoryRef struct {
+	Name      string `json:"name"`
+	Namespace string `json:"namespace"`
 }
