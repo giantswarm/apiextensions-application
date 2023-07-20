@@ -123,10 +123,12 @@ type CatalogSpecRepository struct {
 }
 
 // CatalogStatus represents the current state of the catalog.
+// +k8s:openapi-gen=true
 type CatalogStatus struct {
 	// HelmRepositoryList contains the list of Flux HelmRepository custom resources
 	// that have been successfully created from the Catalog object.
-	// +optional
+	// +kubebuilder:validation:Optional
+	// +nullable
 	HelmRepositoryList *HelmRepositoryList `json:"helmRepositoryList,omitempty"`
 }
 
@@ -140,12 +142,14 @@ type CatalogList struct {
 
 // HelmRepositoryList carries the list of Flux HelmRepository custom resources
 // that have been successfully created from the Catalog object.
+// +k8s:openapi-gen=true
 type HelmRepositoryList struct {
 	// Entries of HelmRepository custom resources.
 	Entries []HelmRepositoryRef `json:"entries"`
 }
 
 // HelmRepositoryRef represents a basic HelmRepository custom resource information.
+// +k8s:openapi-gen=true
 type HelmRepositoryRef struct {
 	Name      string `json:"name"`
 	Namespace string `json:"namespace"`
