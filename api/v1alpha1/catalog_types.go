@@ -35,6 +35,7 @@ func NewCatalogCR() *Catalog {
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:resource:categories=common;giantswarm
+// +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 // +k8s:openapi-gen=true
 // Catalog represents a catalog of managed apps. It stores general information for potential apps to install.
@@ -44,7 +45,7 @@ type Catalog struct {
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              CatalogSpec `json:"spec"`
 	// +kubebuilder:validation:Optional
-	Status CatalogStatus `json:"status"`
+	Status CatalogStatus `json:"status,omitempty"`
 }
 
 // +k8s:openapi-gen=true
