@@ -218,6 +218,7 @@ type AppSpecKubeConfig struct {
 	// +kubebuilder:validation:Optional
 	// +nullable
 	// Context is the kubeconfig context.
+	// Deprecated: this field is no longer used.
 	Context AppSpecKubeConfigContext `json:"context,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
@@ -227,7 +228,7 @@ type AppSpecKubeConfig struct {
 
 // +k8s:openapi-gen=true
 type AppSpecKubeConfigContext struct {
-	// Name is the name of the kubeconfig context.
+	// Name is the name of the kubeconfig context
 	// e.g. giantswarm-12345.
 	Name string `json:"name"`
 }
