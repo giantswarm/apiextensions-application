@@ -217,7 +217,6 @@ type AppSpecKubeConfig struct {
 	InCluster bool `json:"inCluster"`
 	// +kubebuilder:validation:Optional
 	// +nullable
-	// Context is the kubeconfig context.
 	// Deprecated: this field is no longer used.
 	Context AppSpecKubeConfigContext `json:"context,omitempty"`
 	// +kubebuilder:validation:Optional
