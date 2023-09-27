@@ -163,11 +163,11 @@ spec:
                   when deploying the app.
                 properties:
                   context:
-                    description: Context is the kubeconfig context.
+                    description: 'Deprecated: this field is no longer used.'
                     nullable: true
                     properties:
                       name:
-                        description: Name is the name of the kubeconfig context. e.g.
+                        description: Name is the name of the kubeconfig context e.g.
                           giantswarm-12345.
                         type: string
                     required:
