@@ -77,6 +77,7 @@ type AppSpec struct {
 	// +kubebuilder:validation:Optional
 	// +nullable
 	// +listType:=map
+	// +listMapKey:=kind
 	// +listMapKey:=name
 	// +listMapKey:=namespace
 	// ExtraConfigs is a list of configurations to merge together based on the priority and order in the list.

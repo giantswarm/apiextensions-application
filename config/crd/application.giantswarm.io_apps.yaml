@@ -144,6 +144,7 @@ spec:
                 nullable: true
                 type: array
                 x-kubernetes-list-map-keys:
+                - kind
                 - name
                 - namespace
                 x-kubernetes-list-type: map
