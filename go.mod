@@ -5,8 +5,8 @@ go 1.17
 require (
 	github.com/giantswarm/k8smetadata v0.23.0
 	github.com/google/go-cmp v0.6.0
-	k8s.io/api v0.20.12
-	k8s.io/apimachinery v0.20.12
+	k8s.io/api v0.20.15
+	k8s.io/apimachinery v0.20.15
 	sigs.k8s.io/yaml v1.3.0
 )
 
