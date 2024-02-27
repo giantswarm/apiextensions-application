@@ -76,6 +76,10 @@ type AppSpec struct {
 	Config AppSpecConfig `json:"config,omitempty"`
 	// +kubebuilder:validation:Optional
 	// +nullable
+	// +listType:=map
+	// +listMapKey:=kind
+	// +listMapKey:=name
+	// +listMapKey:=namespace
 	// ExtraConfigs is a list of configurations to merge together based on the priority and order in the list.
 	// See: https://github.com/giantswarm/rfc/tree/main/multi-layer-app-config#enhancing-app-cr
 	ExtraConfigs []AppExtraConfig `json:"extraConfigs,omitempty"`
