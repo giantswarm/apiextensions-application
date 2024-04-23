@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Specifying type of the `extraConfigs` field and identifiers of its entries.
+
 ## [0.6.1] - 2023-09-27
 
 ### Changed
