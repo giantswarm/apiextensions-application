@@ -7,7 +7,7 @@ require (
 	github.com/google/go-cmp v0.6.0
 	k8s.io/api v0.20.15
 	k8s.io/apimachinery v0.20.15
-	sigs.k8s.io/yaml v1.3.0
+	sigs.k8s.io/yaml v1.4.0
 )
 
 require (
