@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add status to Catalog CR that keeps inventory of HelmRepository CRs created out of it.
+
 ## [0.6.2] - 2024-04-23
 
 ### Changed
