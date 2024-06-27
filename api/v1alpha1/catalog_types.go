@@ -35,6 +35,7 @@ func NewCatalogCR() *Catalog {
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:resource:categories=common;giantswarm
+// +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 // +k8s:openapi-gen=true
 // Catalog represents a catalog of managed apps. It stores general information for potential apps to install.
@@ -43,6 +44,8 @@ type Catalog struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              CatalogSpec `json:"spec"`
+	// +kubebuilder:validation:Optional
+	Status CatalogStatus `json:"status,omitempty"`
 }
 
 // +k8s:openapi-gen=true
@@ -120,10 +123,35 @@ type CatalogSpecRepository struct {
 	URL string `json:"URL"`
 }
 
+// CatalogStatus represents the current state of the catalog.
+// +k8s:openapi-gen=true
+type CatalogStatus struct {
+	// HelmRepositoryList contains the list of Flux HelmRepository custom resources
+	// that have been successfully created from the Catalog object.
+	// +kubebuilder:validation:Optional
+	// +nullable
+	HelmRepositoryList *HelmRepositoryList `json:"helmRepositoryList,omitempty"`
+}
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type CatalogList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata"`
 	Items           []Catalog `json:"items"`
+}
+
+// HelmRepositoryList carries the list of Flux HelmRepository custom resources
+// that have been successfully created from the Catalog object.
+// +k8s:openapi-gen=true
+type HelmRepositoryList struct {
+	// Entries of HelmRepository custom resources.
+	Entries []HelmRepositoryRef `json:"entries"`
+}
+
+// HelmRepositoryRef represents a basic HelmRepository custom resource information.
+// +k8s:openapi-gen=true
+type HelmRepositoryRef struct {
+	Name      string `json:"name"`
+	Namespace string `json:"namespace"`
 }
