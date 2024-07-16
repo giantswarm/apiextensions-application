@@ -23,7 +23,7 @@ spec:
   namespace: monitoring
   namespaceConfig:
     annotations:
-      linkerd.io/inject: enabled
+      ownership.my-org.com/responsible: my-team
   rollback:
     timeout: 7m0s
   tarballURL: prometheus-1.0.1.tgz
