@@ -100,7 +100,7 @@ func newAppExampleCR() *App {
 		},
 		NamespaceConfig: AppSpecNamespaceConfig{
 			Annotations: map[string]string{
-				"linkerd.io/inject": "enabled",
+				"ownership.my-org.com/responsible": "my-team",
 			},
 		},
 		Rollback: AppSpecRollback{
