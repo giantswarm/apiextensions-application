@@ -7,8 +7,8 @@ toolchain go1.23.4
 require (
 	github.com/giantswarm/k8smetadata v0.25.0
 	github.com/google/go-cmp v0.6.0
-	k8s.io/api v0.31.3
-	k8s.io/apimachinery v0.31.3
+	k8s.io/api v0.31.4
+	k8s.io/apimachinery v0.31.4
 	sigs.k8s.io/yaml v1.4.0
 )
 
