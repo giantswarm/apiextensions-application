@@ -49,7 +49,7 @@ func Test_GenerateCatalogYAML(t *testing.T) {
 					t.Fatal(err)
 				}
 			}
-			goldenFile, err := os.ReadFile(path)
+			goldenFile, err := os.ReadFile(path) //nolint:gosec
 			if err != nil {
 				t.Fatal(err)
 			}
