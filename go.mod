@@ -2,7 +2,7 @@ module github.com/giantswarm/apiextensions-application
 
 go 1.25.0
 
-toolchain go1.25.6
+toolchain go1.25.7
 
 require (
 	github.com/giantswarm/k8smetadata v0.25.0
