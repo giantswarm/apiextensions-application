@@ -5,7 +5,7 @@ go 1.25.0
 toolchain go1.26.1
 
 require (
-	github.com/giantswarm/k8smetadata v0.25.0
+	github.com/giantswarm/k8smetadata v0.26.0
 	github.com/google/go-cmp v0.7.0
 	k8s.io/api v0.35.2
 	k8s.io/apimachinery v0.35.2
