@@ -31,3 +31,5 @@ require (
 	sigs.k8s.io/randfill v1.0.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v6 v6.3.0 // indirect
 )
+
+replace golang.org/x/crypto v0.44.0 => golang.org/x/crypto v0.53.0
